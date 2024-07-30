@@ -43,8 +43,9 @@ import * as $$$$$$$9 from "./matchers/negate.ts";
 import * as $$$$$$$10 from "./matchers/never.ts";
 import * as $$$$$$$11 from "./matchers/queryString.ts";
 import * as $$$$$$$12 from "./matchers/random.ts";
-import * as $$$$$$$13 from "./matchers/site.ts";
-import * as $$$$$$$14 from "./matchers/userAgent.ts";
+import * as $$$$$$$13 from "./matchers/regex.ts";
+import * as $$$$$$$14 from "./matchers/site.ts";
+import * as $$$$$$$15 from "./matchers/userAgent.ts";
 import * as $$$$$0 from "./pages/Page.tsx";
 import * as $$$$$$0 from "./sections/Analytics/Analytics.tsx";
 import * as $$$$$$1 from "./sections/Rendering/Deferred.tsx";
@@ -104,8 +105,9 @@ const manifest = {
     "website/matchers/never.ts": $$$$$$$10,
     "website/matchers/queryString.ts": $$$$$$$11,
     "website/matchers/random.ts": $$$$$$$12,
-    "website/matchers/site.ts": $$$$$$$13,
-    "website/matchers/userAgent.ts": $$$$$$$14,
+    "website/matchers/regex.ts": $$$$$$$13,
+    "website/matchers/site.ts": $$$$$$$14,
+    "website/matchers/userAgent.ts": $$$$$$$15,
   },
   "flags": {
     "website/flags/audience.ts": $$$$$$$$0,
