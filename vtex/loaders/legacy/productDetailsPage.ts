@@ -88,6 +88,16 @@ async function loader(
     priceCurrency: segment?.payload?.currencyCode ?? "BRL",
   });
 
+  page.product.isAccessoryOrSparePartFor?.forEach((item) => {
+    const kitItem = sku.kitItems?.find((i) => i.itemId == item.productID);
+
+    item.additionalProperty?.push({
+      "@type": "PropertyValue",
+      name: "kitItemAmount",
+      value: kitItem?.amount.toString(),
+    });
+  });
+
   return {
     ...page,
     product: props.similars
