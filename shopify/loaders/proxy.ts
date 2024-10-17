@@ -1,4 +1,5 @@
 import { Route } from "../../website/flags/audience.ts";
+import { TextReplace } from "../../website/handlers/proxy.ts";
 import { AppContext } from "../mod.ts";
 import { withDigestCookie } from "../utils/password.ts";
 
@@ -32,17 +33,19 @@ const buildProxyRoutes = (
     includeSiteMap,
     generateDecoSiteMap,
     excludePathsFromDecoSiteMap,
+    replaces,
   }: {
     extraPaths: string[];
     includeSiteMap?: string[];
     generateDecoSiteMap?: boolean;
     excludePathsFromDecoSiteMap: string[];
+    replaces: TextReplace[];
     ctx: AppContext;
   },
 ) => {
-  const urlToUse = publicUrl ? 
-    new URL(publicUrl.startsWith("http") ? publicUrl : `https://${publicUrl}`) :
-    new URL(`https://${storeName}.myshopify.com`);
+  const urlToUse = publicUrl
+    ? new URL(publicUrl.startsWith("http") ? publicUrl : `https://${publicUrl}`)
+    : new URL(`https://${storeName}.myshopify.com`);
 
   const hostname = urlToUse.hostname;
 
@@ -65,6 +68,7 @@ const buildProxyRoutes = (
           url: urlToProxy,
           host: hostToUse,
           customHeaders: withDigestCookie(ctx),
+          replaces,
         },
       },
     });
@@ -126,6 +130,7 @@ export interface Props {
    * @title Exclude paths from /deco-sitemap.xml
    */
   excludePathsFromDecoSiteMap?: string[];
+  replaces?: TextReplace[];
 }
 
 /**
@@ -137,6 +142,7 @@ function loader(
     includeSiteMap = [],
     generateDecoSiteMap = true,
     excludePathsFromDecoSiteMap = [],
+    replaces = [],
   }: Props,
   _req: Request,
   ctx: AppContext,
@@ -146,6 +152,7 @@ function loader(
     excludePathsFromDecoSiteMap,
     includeSiteMap,
     extraPaths: extraPathsToProxy,
+    replaces,
     ctx,
   });
 }
