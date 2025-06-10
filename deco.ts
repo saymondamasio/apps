@@ -10,6 +10,11 @@ const compatibilityApps = [{
 
 const config = {
   apps: [
+    app("barte"),
+    app("pinecone-assistant"),
+    app("shopify-mcp"),
+    app("google-gmail"),
+    app("github"),
     app("turso-db"),
     app("discohook"),
     app("tiny"),
@@ -33,6 +38,7 @@ const config = {
     app("anthropic"),
     app("resend"),
     app("emailjs"),
+    app("aws"),
     app("konfidency"),
     app("mailchimp"),
     app("ai-assistants"),
@@ -74,6 +80,7 @@ const config = {
     app("sap"),
     app("tiptap-cloud"),
     app("browser-use"),
+    app("clearsale"),
     ...compatibilityApps,
   ],
 };
